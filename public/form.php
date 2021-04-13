@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="ru">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <title>Test Form</title>
-        <link rel="stylesheet" href="bootstrap.css">
-    </head>
-    <body>
+<?php if (!isset ($index)) die()?>
+<?php include_header("Отзывы");?>
         <div class="container">
             <h3>Форма отправки отзывов</h3>
             <p><span class="text-danger">* обязательное поле</span></p>
@@ -99,5 +93,4 @@
                 <?php } ?>
             </form>
         </div>
-    </body>
-</html>
+<?php include_footer();?>
