@@ -44,8 +44,13 @@ form .person-data {
     width: 50%;
 }
 
+form .person-data.authentication {
+    display: block;
+    width: 100%;
+    max-width: 100rem;
+}
+
 .col-form-label {
-    font-family: "m bold";
     font-size: 16px;
     width: 100%;
     color: black;
@@ -56,4 +61,31 @@ form .person-data {
 }
 .col-right {
     padding-left: 0.5rem;
+}
+
+.page-header {
+    background: #424243;
+    background: linear-gradient(to top, #ffffff, rgba(66,66,66,0.1));
+}
+
+.page-header .row.first {
+    padding: 0;
+    display: flex;
+}
+
+.page-header .logo {
+    font-size: 1.75rem;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.page-header .authentication {
+    text-align: right;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.col-10, .col-sm-12, .col-lg-3, .col-lg-6 {
+    padding-right: 0;
+    padding-left: 0;
 }

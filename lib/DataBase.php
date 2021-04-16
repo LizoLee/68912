@@ -92,6 +92,26 @@ class DataBase
         }
     }
 
+    /**
+     * $values array's keys must be the following: 
+     * "name", "email", "password"
+     * e.g. ["name" => "Nick", "email" => "ex@ex.su", "password" => "ZHNma2xqaA=="]
+     */
+    public function insert_to_users(array $values)
+    {
+        if (!$this->err) {
+            $query = $this->create_insert_query("users", $values);
+            try {
+                $this->execute($query);
+            } catch (Exception $e) {
+                $this->err = $e->getMessage();
+                return $this->err;
+            }
+        } else {
+            return $this->err;
+        }
+    }
+
     private function create_select_query(string $table, $fields, array $conditions, string $orderby)
     {
         $query = "SELECT ";
@@ -105,7 +125,7 @@ class DataBase
             $query .= $this->conditions_from_arr($conditions);
         }
         if (!empty($orderby)) {
-            $query .= " ORDER BY ". $orderby;
+            $query .= " ORDER BY " . $orderby;
         }
         return $query;
     }
@@ -129,7 +149,7 @@ class DataBase
     {
         $prepared = $this->connection->prepare($query);
         if ($prepared->execute()) {
-            $data = $prepared->fetchAll();
+            $data = $prepared->fetchAll(PDO::FETCH_ASSOC);
         }
         return $data;
     }
